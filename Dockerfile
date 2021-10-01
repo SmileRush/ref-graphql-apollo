@@ -21,7 +21,9 @@ COPY --from=builder /server/dist ./
 
 COPY package.json yarn.lock .yarnrc.yml ./
 COPY .yarn/releases .yarn/releases
+COPY .yarn/plugins .yarn/plugins
 
+# workspaces를 실행하려면, yarn plugin import workspace-tools 터미널 입력!
 RUN yarn workspaces focus --production
 
 EXPOSE $PORT
