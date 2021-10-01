@@ -15,9 +15,10 @@ FROM node:lts-alpine
 
 ENV NODE_ENV=production
 
-WORKDIR /dist
+WORKDIR /server
 
-COPY --from=builder /server/dist ./
+# /server/dist를 dist에 복사
+COPY --from=builder /server/dist dist
 
 COPY package.json yarn.lock .yarnrc.yml ./
 COPY .yarn/releases .yarn/releases
