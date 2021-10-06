@@ -26,7 +26,6 @@ RUN yarn workspaces focus --production
 
 # /server/dist를 dist에 복사 (builder에 의존하는 거는 아래로~)
 COPY --from=builder /server/dist dist
-COPY --from=builder /server/src/book.graphql dist/
 
 EXPOSE $PORT
 ENTRYPOINT ["yarn"]
