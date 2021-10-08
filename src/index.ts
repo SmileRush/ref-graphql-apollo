@@ -1,8 +1,8 @@
 import { ApolloServer, gql } from 'apollo-server-express'
 import express from 'express'
-import fs from 'fs'
-import path from 'path'
 import { Pool } from 'pg'
+
+import bookTypeDefs from './book.graphql'
 
 const pool = new Pool({
   user: process.env.POSTGRES_USER,
@@ -29,11 +29,11 @@ async function startApolloServer(typeDefs: any, resolvers: any) {
     app.listen(process.env.PORT ?? 4000, resolve as any)
   )
 
-  console.log('started')
+  console.log('started !! @@@@')
 }
 
 const typeDefs = gql`
-  ${fs.readFileSync(path.resolve(__dirname, 'book.graphql'))}
+  ${bookTypeDefs}
 `
 
 // Resolvers define the technique for fetching the types defined in the
